@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>nu.danielsundberg.goodstuff</groupId>
+    <artifactId>goodstuff-reactor</artifactId>
+    <version>0.1.0-SNAPSHOT</version>
+    <name>Goodstuff :: Reactor</name>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>goodstuff-ejb</module>
+        <module>goodstuff-ear</module>
+    </modules>
+
+    <properties>
+        <project.build.sourceEncoding>ISO_8859_1</project.build.sourceEncoding>
+        <java.version>1.6</java.version>
+        <jee.version>5</jee.version>
+        <ejb.version>3.1</ejb.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>nu.danielsundberg.goodstuff</groupId>
+                <artifactId>goodstuff-ejb</artifactId>
+                <version>${project.version}</version>
+                <type>ejb</type>
+            </dependency>
+            
+             <!-- Externa dependenciess -->
+            <dependency>
+                <groupId>javax.xml</groupId>
+                <artifactId>webservices-api</artifactId>
+                <version>2.1-b16</version>
+            </dependency>
+            <dependency>
+                <groupId>com.sun.xml.bind</groupId>
+                <artifactId>jaxb-xjc</artifactId>
+                <version>2.1.7</version>
+            </dependency>
+            <dependency>
+                <groupId>com.sun.xml.ws</groupId>
+                <artifactId>jaxws-rt</artifactId>
+                <version>2.1</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.ejb</groupId>
+                <artifactId>ejb-api</artifactId>
+                <version>3.0</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.validation</groupId>
+                <artifactId>validation-api</artifactId>
+                <version>1.0.0.GA</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-lang</groupId>
+                <artifactId>commons-lang</artifactId>
+                <version>2.6</version>
+            </dependency>
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-annotations</artifactId>
+                <version>3.3.1.GA</version>
+            </dependency>
+            <dependency>
+            	<groupId>hibernate</groupId>
+            	<artifactId>hibernate</artifactId>
+            	<version>3.1rc2</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.transaction</groupId>
+                <artifactId>jta</artifactId>
+                <version>1.1</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>3.0.1</version>
+            </dependency>
+            <dependency>
+                <groupId>joda-time</groupId>
+                <artifactId>joda-time</artifactId>
+                <version>2.0</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-beanutils</groupId>
+                <artifactId>commons-beanutils-bean-collections</artifactId>
+                <version>1.8.3</version>
+            </dependency>
+            
+            <!-- Test dependenciess -->
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>4.8.2</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+	 	<groupId>org.mockito</groupId>
+	    	<artifactId>mockito-all</artifactId>
+	    	<version>1.9.0-rc1</version>
+	    	<scope>test</scope>
+	    </dependency>
+            <dependency>
+            	<groupId>hibernate</groupId>
+            	<artifactId>hibernate-entitymanager</artifactId>
+            	<version>3.4.0.GA</version>
+            	<type>pom</type>
+            	<scope>compile</scope>
+            </dependency>
+            <dependency>
+            	<groupId>org.hibernate</groupId>
+            	<artifactId>ejb3-persistence</artifactId>
+            	<version>3.3.2.Beta1</version>
+            	<scope>compile</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <!-- Common boilerplate below - subject for refactoring -->
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
