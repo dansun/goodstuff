@@ -1,4 +1,3 @@
-gamegame-core
+goodstuff
 =============
-
-Core libraries and framework for turnbased games.
+Cool good stuff
