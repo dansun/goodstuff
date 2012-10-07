@@ -65,37 +65,6 @@
 							<password>g00dstuff</password>
 						</configuration>
 						<executions>
-						    <execution>
-					            <id>deploy-driver</id>
-					            <phase>package</phase>
-					            <configuration>
-					                <groupId>postgresql</groupId>
-					                <artifactId>postgresql</artifactId>
-					                <name>postgresql.jar</name>
-					            </configuration>
-					            <goals>
-					                <goal>deploy-artifact</goal>
-					            </goals>
-					        </execution>
-					        <execution>
-					            <id>add-datasource</id>
-					            <phase>install</phase>
-					            <configuration>
-					                <address>subsystem=datasources,data-source=goodstuffDataSource</address>
-					                <properties>
-					                    <connection-url>jdbc:postgresql://127.0.0.1/goodstuff</connection-url>
-					                    <jndi-name>goodstuffDataSource</jndi-name>
-					                    <enabled>true</enabled>
-					                    <pool-name>goodstuffPool</pool-name>
-					                    <user-name>goodstuff</user-name>
-					                    <password>g00dstuff</password>
-					                    <driver-name>postgresql.jar</driver-name>
-					                </properties>
-					            </configuration>
-					            <goals>
-					                <goal>add-resource</goal>
-					            </goals>
-					        </execution>
 							<!-- Undeploy the application on clean -->
 							<execution>
 								<id>undeploy</id>
