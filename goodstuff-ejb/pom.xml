@@ -79,6 +79,7 @@
 			</clientExcludes> 
                 </configuration>
             </plugin>
+            
         </plugins>
     </build>
 </project>

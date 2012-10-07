@@ -30,6 +30,12 @@
                 <version>${project.version}</version>
                 <type>ejb</type>
             </dependency>
+            <dependency>
+                <groupId>nu.danielsundberg.goodstuff</groupId>
+                <artifactId>goodstuff-ear</artifactId>
+                <version>${project.version}</version>
+                <type>ear</type>
+            </dependency>
             
              <!-- Externa dependenciess -->
             <dependency>
@@ -127,11 +133,20 @@
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.3.2</version>
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
                     <encoding>${project.build.sourceEncoding}</encoding>
                 </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-ear-plugin</artifactId>
+                <version>2.6</version>
+            </plugin>
+             <plugin>
+                <artifactId>maven-ejb-plugin</artifactId>
+                <version>2.3</version>
             </plugin>
         </plugins>
     </build>
