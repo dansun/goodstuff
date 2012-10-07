@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd">
-	<persistence-unit name="goodstuff" transaction-type="JTA">
+	<persistence-unit name="goodstuffPersitenceUnit" transaction-type="JTA">
       	<provider>org.hibernate.ejb.HibernatePersistence</provider>
-		<jta-data-source>goodstuffds</jta-data-source>
+		<jta-data-source>goodstuffDataSource</jta-data-source>
 		<properties>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect" />
 			<property name="hibernate.connection.driver_class" value="oracle.jdbc.driver.OracleDriver" />

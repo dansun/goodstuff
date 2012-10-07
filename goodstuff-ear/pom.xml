@@ -81,10 +81,10 @@
 					            <id>add-datasource</id>
 					            <phase>install</phase>
 					            <configuration>
-					                <address>subsystem=datasources,data-source=goodstuffds</address>
+					                <address>subsystem=datasources,data-source=goodstuffDataSource</address>
 					                <properties>
 					                    <connection-url>jdbc:postgresql://127.0.0.1/goodstuff</connection-url>
-					                    <jndi-name>goodstuffds</jndi-name>
+					                    <jndi-name>goodstuffDataSource</jndi-name>
 					                    <enabled>true</enabled>
 					                    <pool-name>goodstuffPool</pool-name>
 					                    <user-name>goodstuff</user-name>
