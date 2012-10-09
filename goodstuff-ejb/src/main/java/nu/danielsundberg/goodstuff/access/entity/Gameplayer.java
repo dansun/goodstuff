@@ -6,9 +6,10 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -30,10 +31,12 @@ public class Gameplayer implements Serializable {
 	@Column(nullable=false)
 	private long playerId;
 	
-	@OneToOne(mappedBy="gameId")
+	@ManyToOne
+	@JoinColumn(name="gameId")
 	private Game game;
 	
-	@OneToOne(mappedBy="playerId")
+	@ManyToOne
+	@JoinColumn(name="playerId")
 	private Player player;
 
 	public void setGameId(long gameId) {
