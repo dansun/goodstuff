@@ -15,7 +15,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "GAMES")
 @NamedQueries({
-        @NamedQuery(name = "game.findByPlayerId", query = "SELECT g FROM Game AS g WHERE g.player = :player")
+        @NamedQuery(name = "game.findByPlayerId", query = "SELECT g FROM Game AS g WHERE :player IN g.players")
 })
 public class Game {
 
