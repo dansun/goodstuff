@@ -32,11 +32,11 @@ public class Gameplayer implements Serializable {
 	private long playerId;
 	
 	@ManyToOne
-	@JoinColumn(name="gameId")
+	@JoinColumn(name="gameId", insertable=false, updatable=false)
 	private Game game;
 	
 	@ManyToOne
-	@JoinColumn(name="playerId")
+	@JoinColumn(name="playerId", insertable=false, updatable=false)
 	private Player player;
 
 	public void setGameId(long gameId) {
