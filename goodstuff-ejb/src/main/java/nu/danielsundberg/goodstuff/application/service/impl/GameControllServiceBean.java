@@ -29,15 +29,9 @@ public class GameControllServiceBean implements GameControllService {
 		Query playerQuery = entityManager.createNamedQuery("player.findByPlayerName");
 		playerQuery.setParameter("playerName", playerName);
 		Player player = (Player) playerQuery.getSingleResult();
-		
-		Query gameplayerQuery = entityManager.createNamedQuery("gameplayer.findByPlayerId");
-		gameplayerQuery.setParameter("playerId", player.getPlayerId());
-		@SuppressWarnings("unchecked")
-		Set<Gameplayer> gamesPlayerIsPlaying = new HashSet<Gameplayer>((List<Gameplayer>) gameplayerQuery.getResultList());
-		
 		Set<Game> games = new HashSet<Game>();
-		for(Gameplayer gp : gamesPlayerIsPlaying) {
-			games.add(entityManager.find(Game.class, gp.getGameId()));
+		for(Gameplayer gp : player.getGames()) {
+			games.add(gp.getGame());
 		}
 		return games;
 	}

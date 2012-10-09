@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -22,12 +23,18 @@ public class Gameplayer implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column
+	@Column(nullable=false)
 	private long gameId;
 	
 	@Id
-	@Column
+	@Column(nullable=false)
 	private long playerId;
+	
+	@OneToOne(mappedBy="gameId")
+	private Game game;
+	
+	@OneToOne(mappedBy="playerId")
+	private Player player;
 
 	public void setGameId(long gameId) {
 		this.gameId = gameId;
@@ -43,6 +50,22 @@ public class Gameplayer implements Serializable {
 
 	public long getPlayerId() {
 		return playerId;
+	}
+
+	public void setGame(Game game) {
+		this.game = game;
+	}
+
+	public Game getGame() {
+		return game;
+	}
+
+	public void setPlayer(Player player) {
+		this.player = player;
+	}
+
+	public Player getPlayer() {
+		return player;
 	}
 	
 }
