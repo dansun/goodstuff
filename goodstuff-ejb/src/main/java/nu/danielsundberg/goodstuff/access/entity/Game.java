@@ -1,5 +1,6 @@
 package nu.danielsundberg.goodstuff.access.entity;
 
+import java.io.Serializable;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -12,7 +13,9 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "GAME")
-public class Game {
+public class Game implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(generator = "GAME_SEQUENCE")

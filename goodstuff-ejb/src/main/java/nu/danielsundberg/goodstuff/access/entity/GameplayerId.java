@@ -1,6 +1,10 @@
 package nu.danielsundberg.goodstuff.access.entity;
 
-public class GameplayerId {
+import java.io.Serializable;
+
+public class GameplayerId implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	private long gameId;
 	private long playerId;

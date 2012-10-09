@@ -1,5 +1,6 @@
 package nu.danielsundberg.goodstuff.access.entity;
 
+import java.io.Serializable;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -17,7 +18,9 @@ import javax.persistence.Table;
 @NamedQueries({
         @NamedQuery(name = "player.findByPlayerName", query = "SELECT p FROM Player AS p WHERE p.playerName = :playerName")
 })
-public class Player {
+public class Player implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(generator = "PLAYER_SEQUENCE")
