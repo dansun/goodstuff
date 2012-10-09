@@ -6,6 +6,6 @@ import nu.danielsundberg.goodstuff.access.entity.Game;
 
 public interface GameControllService {
 	
-	public Set<Game> getGamesForPlayer(String playerId);
+	public Set<Game> getGamesForPlayer(String playerName);
 
 }

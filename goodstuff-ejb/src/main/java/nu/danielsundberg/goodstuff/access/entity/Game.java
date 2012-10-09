@@ -6,52 +6,47 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "GAMES")
-@NamedQueries({
-        @NamedQuery(name = "game.findByPlayerId", query = "SELECT g FROM Game AS g WHERE :player IN g.players")
-})
+@Table(name = "GAME")
 public class Game {
 
 	@Id
 	@GeneratedValue(generator = "GAME_SEQUENCE")
     @SequenceGenerator(name = "GAME_SEQUENCE", sequenceName = "GAME_SEQUENCE")
-    private long id;
+    private long gameId;
 	
-	@Column(name="GAMEID", nullable = false)
-	private String gameId;
+	@Column
+	private String gameName;
 	
-	@OneToMany(mappedBy="playerId")
-	private Set<Player> players;
+	@OneToMany(mappedBy="gameId")
+	private Set<Gameplayer> players;
 
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	public void setPlayers(Set<Player> players) {
+	public void setPlayers(Set<Gameplayer> players) {
 		this.players = players;
 	}
 
-	public Set<Player> getPlayers() {
+	public Set<Gameplayer> getPlayers() {
 		return players;
 	}
 
-	public void setGameId(String gameId) {
+	public void setGameId(long gameId) {
 		this.gameId = gameId;
 	}
 
-	public String getGameId() {
+	public long getGameId() {
 		return gameId;
+	}
+
+	public void setGameName(String gameName) {
+		this.gameName = gameName;
+	}
+
+	public String getGameName() {
+		return gameName;
 	}
 	
 }

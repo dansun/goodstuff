@@ -10,6 +10,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import nu.danielsundberg.goodstuff.access.entity.Game;
+import nu.danielsundberg.goodstuff.access.entity.Gameplayer;
 import nu.danielsundberg.goodstuff.access.entity.Player;
 import nu.danielsundberg.goodstuff.application.service.GameControllService;
 
@@ -24,15 +25,20 @@ public class GameControllServiceBean implements GameControllService {
     }
 
 	@Override
-	public Set<Game> getGamesForPlayer(String playerId) {
-		Query playerQuery = entityManager.createNamedQuery("player.findByPlayerId");
-		playerQuery.setParameter("playerId", playerId);
+	public Set<Game> getGamesForPlayer(String playerName) {
+		Query playerQuery = entityManager.createNamedQuery("player.findByPlayerName");
+		playerQuery.setParameter("playerName", playerName);
 		Player player = (Player) playerQuery.getSingleResult();
 		
-		Query gameQuery = entityManager.createNamedQuery("game.findByPlayer");
-		gameQuery.setParameter("player", player);
+		Query gameplayerQuery = entityManager.createNamedQuery("gameplayer.findByPlayerId");
+		gameplayerQuery.setParameter("playerId", player.getPlayerId());
 		@SuppressWarnings("unchecked")
-		Set<Game> games = new HashSet<Game>((List<Game>) gameQuery.getResultList());
+		Set<Gameplayer> gamesPlayerIsPlaying = new HashSet<Gameplayer>((List<Gameplayer>) gameplayerQuery.getResultList());
+		
+		Set<Game> games = new HashSet<Game>();
+		for(Gameplayer gp : gamesPlayerIsPlaying) {
+			games.add(entityManager.find(Game.class, gp.getGameId()));
+		}
 		return games;
 	}
 	

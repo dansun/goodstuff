@@ -1,43 +1,58 @@
 package nu.danielsundberg.goodstuff.access.entity;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "PLAYERS")
 @NamedQueries({
-        @NamedQuery(name = "player.findByPlayerId", query = "SELECT p FROM Player AS p WHERE p.playerId = :playerId")
+        @NamedQuery(name = "player.findByPlayerName", query = "SELECT p FROM Player AS p WHERE p.playerName = :playerName")
 })
 public class Player {
 
 	@Id
 	@GeneratedValue(generator = "PLAYER_SEQUENCE")
     @SequenceGenerator(name = "PLAYER_SEQUENCE", sequenceName = "PLAYER_SEQUENCE")
-    private long id;
+    private long playerId;
 	
-	@Column(name="PLAYERID", nullable = false)
-	private String playerId;
+	@Column
+	private String playerName;
 	
-	public long getId() {
-		return id;
+	@OneToMany(mappedBy="playerId")
+	private Set<Gameplayer> games;
+	
+
+	public void setGames(Set<Gameplayer> games) {
+		this.games = games;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	public Set<Gameplayer> getGames() {
+		return games;
 	}
 
-	public void setPlayerId(String playerId) {
+	public void setPlayerId(long playerId) {
 		this.playerId = playerId;
 	}
 
-	public String getPlayerId() {
+	public long getPlayerId() {
 		return playerId;
+	}
+
+	public void setPlayerName(String playerName) {
+		this.playerName = playerName;
+	}
+
+	public String getPlayerName() {
+		return playerName;
 	}
 	
 }

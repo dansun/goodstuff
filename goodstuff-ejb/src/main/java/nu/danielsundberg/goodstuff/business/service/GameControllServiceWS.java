@@ -29,8 +29,8 @@ public class GameControllServiceWS extends GameControllServiceBean {
 
 	@Override
 	@WebMethod(operationName="getGamesForPlayer")
-	public @WebResult(name="Game") Set<Game> getGamesForPlayer(@WebParam(name="PlayerId") String playerId) {
-		return super.getGamesForPlayer(playerId);
+	public @WebResult(name="Game") Set<Game> getGamesForPlayer(@WebParam(name="PlayerName") String playerName) {
+		return super.getGamesForPlayer(playerName);
 	}
 	
 }
