@@ -5,10 +5,10 @@
       	<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<jta-data-source>goodstuffDataSource</jta-data-source>
 		<properties>
-			<property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect" />
-			<property name="hibernate.connection.driver_class" value="oracle.jdbc.driver.OracleDriver" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
+			<property name="hibernate.connection.driver_class" value="org.postgresql.Driver" />
 			<property name="hibernate.max_fetch_depth" value="3" />
-			<property name="hibernate.show_sql" value="false" />
+			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.use_sql_comments" value="true" />
 			<property name="hibernate.format_sql" value="false" />
 			<property name="hibernate.query.substitutions" value="true Y, false N" />
