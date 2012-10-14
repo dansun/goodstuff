@@ -13,10 +13,12 @@ import javax.jws.soap.SOAPBinding;
 import javax.persistence.EntityManager;
 
 import nu.danielsundberg.goodstuff.access.entity.Game;
+import nu.danielsundberg.goodstuff.access.entity.Player;
+import nu.danielsundberg.goodstuff.application.exception.PlayerNotFoundException;
 import nu.danielsundberg.goodstuff.application.service.impl.GameControllServiceBean;
 
 @Stateless
-@WebService
+@WebService(name="GameControllService", targetNamespace="service.business.goodstuff.danielsundberg.nu")
 @SOAPBinding(style = javax.jws.soap.SOAPBinding.Style.DOCUMENT)
 @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
 public class GameControllServiceWS extends GameControllServiceBean {
@@ -29,8 +31,29 @@ public class GameControllServiceWS extends GameControllServiceBean {
 
 	@Override
 	@WebMethod(operationName="getGamesForPlayer")
-	public @WebResult(name="Game") Set<Game> getGamesForPlayer(@WebParam(name="PlayerName") String playerName) {
+	public @WebResult(name="Game", 
+						partName="Game", 
+						targetNamespace="business.goodstuff.danielsundberg.nu") Set<Game> 
+		getGamesForPlayer(
+				@WebParam(name="PlayerName", 
+							partName = "PlayerName", 
+							targetNamespace="business.goodstuff.danielsundberg.nu") String playerName) throws PlayerNotFoundException {
 		return super.getGamesForPlayer(playerName);
+	}
+	
+	@Override
+	@WebMethod(operationName="registerPlayer")
+	public @WebResult(name="Player", 
+			partName="Player", 
+			targetNamespace="business.goodstuff.danielsundberg.nu") Player 
+		registerPlayer(
+				@WebParam(name="PlayerName", 
+					partName = "PlayerName", 
+					targetNamespace="business.goodstuff.danielsundberg.nu") String playerName, 
+				@WebParam(name="PlayerPassword", 
+					partName = "PlayerPassword", 
+					targetNamespace="business.goodstuff.danielsundberg.nu") String password) {
+		return super.registerPlayer(playerName, password);
 	}
 	
 }

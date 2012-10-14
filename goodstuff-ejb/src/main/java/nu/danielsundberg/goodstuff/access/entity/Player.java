@@ -14,7 +14,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "PLAYERS")
+@Table(name = "PLAYER")
 @NamedQueries({
         @NamedQuery(name = "player.findByPlayerName", query = "SELECT p FROM Player AS p WHERE p.playerName = :playerName")
 })
@@ -25,10 +25,14 @@ public class Player implements Serializable {
 	@Id
 	@GeneratedValue(generator = "PLAYER_SEQUENCE")
     @SequenceGenerator(name = "PLAYER_SEQUENCE", sequenceName = "PLAYER_SEQUENCE")
+	@Column(name="PLAYERID")
     private long playerId;
 	
-	@Column
+	@Column(name="PLAYERNAME")
 	private String playerName;
+	
+	@Column(name="PASSWORD")
+	private String password;
 	
 	@OneToMany(mappedBy="playerId")
 	private Set<Gameplayer> games;
@@ -56,6 +60,14 @@ public class Player implements Serializable {
 
 	public String getPlayerName() {
 		return playerName;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	
 }
