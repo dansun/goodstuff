@@ -18,7 +18,7 @@ import nu.danielsundberg.goodstuff.application.service.GameControllService;
 @Stateless
 public class GameControllServiceBean implements GameControllService {
 
-	@PersistenceContext(unitName = "goodstuffPersitenceUnit")
+	@PersistenceContext(unitName = "goodstuffPersistenceUnit")
     private EntityManager entityManager;
     
 	public void setEntityManager(final EntityManager entityManager) {

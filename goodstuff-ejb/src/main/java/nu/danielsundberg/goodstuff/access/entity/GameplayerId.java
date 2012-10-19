@@ -9,6 +9,9 @@ public class GameplayerId implements Serializable {
 	private long gameId;
 	private long playerId;
 	
+	public GameplayerId() {
+	}
+	
 	public GameplayerId(long gameId, long playerId) {
 		this.setGameId(gameId);
 		this.setPlayerId(playerId);
