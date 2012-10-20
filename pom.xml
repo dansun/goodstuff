@@ -1,99 +1,132 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    
-    <modelVersion>4.0.0</modelVersion>
-    <groupId>nu.danielsundberg.goodstuff</groupId>
-    <artifactId>goodstuff-reactor</artifactId>
-    <version>0.1.0-SNAPSHOT</version>
-    <name>Goodstuff :: Reactor</name>
-    <packaging>pom</packaging>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-    <modules>
-        <module>goodstuff-ejb</module>
-        <module>goodstuff-ear</module>
-    </modules>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>nu.danielsundberg.goodstuff</groupId>
+	<artifactId>goodstuff-reactor</artifactId>
+	<version>0.1.0-SNAPSHOT</version>
+	<name>Goodstuff :: Reactor</name>
+	<packaging>pom</packaging>
 
-    <properties>
-        <project.build.sourceEncoding>ISO_8859_1</project.build.sourceEncoding>
-        <java.version>1.6</java.version>
-        <jee.version>5</jee.version>
-        <ejb.version>3.1</ejb.version>
-    </properties>
+	<modules>
+		<module>goodstuff-ejb</module>
+		<module>goodstuff-ear</module>
+	</modules>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>nu.danielsundberg.goodstuff</groupId>
-                <artifactId>goodstuff-ejb</artifactId>
-                <version>${project.version}</version>
-                <type>ejb</type>
-            </dependency>
-            <dependency>
-                <groupId>nu.danielsundberg.goodstuff</groupId>
-                <artifactId>goodstuff-ear</artifactId>
-                <version>${project.version}</version>
-                <type>ear</type>
-            </dependency>
-            
-             <!-- Externa dependenciess -->
-            <dependency>
-                <groupId>javax.xml</groupId>
-                <artifactId>webservices-api</artifactId>
-                <version>2.1-b16</version>
-            </dependency>
-            <dependency>
-                <groupId>com.sun.xml.bind</groupId>
-                <artifactId>jaxb-xjc</artifactId>
-                <version>2.1.7</version>
-            </dependency>
-            <dependency>
-                <groupId>com.sun.xml.ws</groupId>
-                <artifactId>jaxws-rt</artifactId>
-                <version>2.1</version>
-            </dependency>
-            <dependency>
-                <groupId>javax.ejb</groupId>
-                <artifactId>ejb-api</artifactId>
-                <version>3.0</version>
-            </dependency>
-            <dependency>
-                <groupId>javax.validation</groupId>
-                <artifactId>validation-api</artifactId>
-                <version>1.0.0.GA</version>
-            </dependency>
-            <dependency>
-                <groupId>commons-lang</groupId>
-                <artifactId>commons-lang</artifactId>
-                <version>2.6</version>
-            </dependency>
-            <dependency>
-                <groupId>javax.transaction</groupId>
-                <artifactId>jta</artifactId>
-                <version>1.1</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.commons</groupId>
-                <artifactId>commons-lang3</artifactId>
-                <version>3.0.1</version>
-            </dependency>
-            <dependency>
-                <groupId>joda-time</groupId>
-                <artifactId>joda-time</artifactId>
-                <version>2.0</version>
-            </dependency>
-            <dependency>
-                <groupId>commons-beanutils</groupId>
-                <artifactId>commons-beanutils-bean-collections</artifactId>
-                <version>1.8.3</version>
-            </dependency>
-		    <dependency>
+	<properties>
+		<project.build.sourceEncoding>ISO_8859_1</project.build.sourceEncoding>
+		<java.version>1.6</java.version>
+		<jee.version>5</jee.version>
+		<ejb.version>3.1</ejb.version>
+		<slf4jVersion>1.6.1</slf4jVersion>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>nu.danielsundberg.goodstuff</groupId>
+				<artifactId>goodstuff-ejb</artifactId>
+				<version>${project.version}</version>
+				<type>ejb</type>
+			</dependency>
+			<dependency>
+				<groupId>nu.danielsundberg.goodstuff</groupId>
+				<artifactId>goodstuff-ear</artifactId>
+				<version>${project.version}</version>
+				<type>ear</type>
+			</dependency>
+
+			<!-- Externa dependenciess -->
+			<dependency>
+				<groupId>javax.xml</groupId>
+				<artifactId>webservices-api</artifactId>
+				<version>2.1-b16</version>
+			</dependency>
+			<dependency>
+				<groupId>com.sun.xml.bind</groupId>
+				<artifactId>jaxb-xjc</artifactId>
+				<version>2.1.7</version>
+			</dependency>
+			<dependency>
+				<groupId>com.sun.xml.ws</groupId>
+				<artifactId>jaxws-rt</artifactId>
+				<version>2.1</version>
+			</dependency>
+			<dependency>
+				<groupId>javax.ejb</groupId>
+				<artifactId>ejb-api</artifactId>
+				<version>3.0</version>
+			</dependency>
+			<dependency>
+				<groupId>javax.validation</groupId>
+				<artifactId>validation-api</artifactId>
+				<version>1.0.0.GA</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-lang</groupId>
+				<artifactId>commons-lang</artifactId>
+				<version>2.6</version>
+			</dependency>
+			<dependency>
+				<groupId>javax.transaction</groupId>
+				<artifactId>jta</artifactId>
+				<version>1.1</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-lang3</artifactId>
+				<version>3.0.1</version>
+			</dependency>
+			<dependency>
+				<groupId>joda-time</groupId>
+				<artifactId>joda-time</artifactId>
+				<version>2.0</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-beanutils</groupId>
+				<artifactId>commons-beanutils-bean-collections</artifactId>
+				<version>1.8.3</version>
+			</dependency>
+			<dependency>
 				<groupId>org.hibernate</groupId>
 				<artifactId>hibernate-core</artifactId>
 				<version>4.1.7.Final</version>
-		    </dependency>
+			</dependency>
             
+            <!-- Logging deps -->
+            <dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-nop</artifactId>
+				<version>${slf4jVersion}</version>
+			</dependency>
+			<!-- Binding for System.out -->
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-simple</artifactId>
+				<version>${slf4jVersion}</version>
+			</dependency>		
+			<!--Binding for log4j version 1.2.x You also need to 
+			place log4j.jar on your class path. -->
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-log4j12</artifactId>
+				<version>${slf4jVersion}</version>
+			</dependency>
+			<dependency>
+				<groupId>log4j</groupId>
+				<artifactId>log4j</artifactId>
+				<version>1.2.16</version>
+				<scope>runtime</scope>
+			</dependency>
+			<!--Binding for commons logging over slf4j -->
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>jcl-over-slf4j</artifactId>
+				<version>${slf4jVersion}</version>
+				<scope>runtime</scope>
+			</dependency>
+			
             <!-- Test dependenciess -->
             <dependency>
                 <groupId>junit</groupId>
@@ -136,7 +169,7 @@
 				<version>2.2.8</version>
 				<scope>test</scope>
 			</dependency>
-        </dependencies>
+		</dependencies>
     </dependencyManagement>
 
     <!-- Common boilerplate below - subject for refactoring -->
@@ -159,7 +192,20 @@
                 <artifactId>maven-ejb-plugin</artifactId>
                 <version>2.3</version>
             </plugin>
-        </plugins>
+			<plugin>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.12.4</version>
+				<configuration>
+					<forkMode>pertest</forkMode>
+					<systemProperties>
+						<property>
+							<name>log4j.configuration</name>
+							<value>file:target/test-classes/log4j.properties</value>
+						</property>
+					</systemProperties>
+				</configuration>
+			</plugin>
+		</plugins>
     </build>
 
 </project>
