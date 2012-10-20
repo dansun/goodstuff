@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project name="goodstuff-ejb-0.1.0-SNAPSHOT" resourceRoot="" soapui-version="4.0.1.1" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.actions.iface.tools.soapui.TestRunnerAction@values-local"><![CDATA[<xml-fragment xmlns:con="http://eviware.com/soapui/config">
+  <con:entry key="Global Properties" value=""/>
+  <con:entry key="TestSuite" value="TestSuite 1"/>
+  <con:entry key="Report to Generate" value=""/>
+  <con:entry key="Password" value=""/>
+  <con:entry key="soapui-setings.xml Password" value=""/>
+  <con:entry key="TestRunner Path" value=""/>
+  <con:entry key="Tool Args" value=""/>
+  <con:entry key="Ignore Errors" value="false"/>
+  <con:entry key="Host:Port" value=""/>
+  <con:entry key="WSS Password Type" value=""/>
+  <con:entry key="Save Project" value="false"/>
+  <con:entry key="Enable UI" value="false"/>
+  <con:entry key="System Properties" value=""/>
+  <con:entry key="Domain" value=""/>
+  <con:entry key="Coverage Report" value="false"/>
+  <con:entry key="Export JUnit Results" value="false"/>
+  <con:entry key="Open Report" value="false"/>
+  <con:entry key="Project Properties" value=""/>
+  <con:entry key="Project Password" value=""/>
+  <con:entry key="Export All" value="false"/>
+  <con:entry key="Report Format(s)" value=""/>
+  <con:entry key="TestCase" value="&lt;all>"/>
+  <con:entry key="Print Report" value="false"/>
+  <con:entry key="Username" value=""/>
+  <con:entry key="Root Folder" value=""/>
+  <con:entry key="Save After" value="false"/>
+  <con:entry key="Add Settings" value="false"/>
+  <con:entry key="Endpoint" value=""/>
+</xml-fragment>]]></con:setting></con:settings><con:interface xsi:type="con:WsdlInterface" wsaVersion="NONE" name="GameControllServiceWSServiceSoapBinding" type="wsdl" bindingName="{service.business.goodstuff.danielsundberg.nu}GameControllServiceWSServiceSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/goodstuff-ejb-0.1.0-SNAPSHOT/GameControllService?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/goodstuff-ejb-0.1.0-SNAPSHOT/GameControllService?wsdl"><con:part><con:url>http://localhost:8080/goodstuff-ejb-0.1.0-SNAPSHOT/GameControllService?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="GameControllServiceWSService" targetNamespace="service.business.goodstuff.danielsundberg.nu" xmlns:ns1="nu.danielsundberg.goodstuff.application.exception" xmlns:ns2="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="service.business.goodstuff.danielsundberg.nu" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="service.business.goodstuff.danielsundberg.nu" xmlns:ns1="business.goodstuff.danielsundberg.nu" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="business.goodstuff.danielsundberg.nu"/>
+      <xs:element name="getGamesForPlayer" type="tns:getGamesForPlayer"/>
+      <xs:element name="getGamesForPlayerResponse" type="tns:getGamesForPlayerResponse"/>
+      <xs:element name="registerPlayer" type="tns:registerPlayer"/>
+      <xs:element name="registerPlayerResponse" type="tns:registerPlayerResponse"/>
+      <xs:complexType name="getGamesForPlayer">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="ns1:PlayerName"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getGamesForPlayerResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" ref="ns1:Game"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="game">
+        <xs:sequence>
+          <xs:element name="gameId" type="xs:long"/>
+          <xs:element minOccurs="0" name="gameName" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="players" nillable="true" type="tns:gameplayer"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="gameplayer">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="game" type="tns:game"/>
+          <xs:element name="gameId" type="xs:long"/>
+          <xs:element minOccurs="0" name="player" type="tns:player"/>
+          <xs:element name="playerId" type="xs:long"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="player">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="games" nillable="true" type="tns:gameplayer"/>
+          <xs:element minOccurs="0" name="password" type="xs:string"/>
+          <xs:element name="playerId" type="xs:long"/>
+          <xs:element minOccurs="0" name="playerName" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="registerPlayer">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="ns1:PlayerName"/>
+          <xs:element minOccurs="0" ref="ns1:PlayerPassword"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="registerPlayerResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="ns1:Player"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="business.goodstuff.danielsundberg.nu" xmlns="business.goodstuff.danielsundberg.nu" xmlns:ns1="service.business.goodstuff.danielsundberg.nu" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="service.business.goodstuff.danielsundberg.nu"/>
+      <xs:element name="Game" type="ns1:game"/>
+      <xs:element name="Player" type="ns1:player"/>
+      <xs:element name="PlayerName" type="xs:string"/>
+      <xs:element name="PlayerPassword" type="xs:string"/>
+    </xs:schema>
+    <xsd:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="nu.danielsundberg.goodstuff.application.exception" xmlns:tns="nu.danielsundberg.goodstuff.application.exception">
+      <xsd:element name="PlayerNotFound" type="tns:PlayerNotFound"/>
+      <xsd:complexType name="PlayerNotFound">
+        <xsd:sequence/>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="PlayerNotFoundException">
+    <wsdl:part element="ns1:PlayerNotFound" name="PlayerNotFoundException"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="registerPlayer">
+    <wsdl:part element="tns:registerPlayer" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getGamesForPlayerResponse">
+    <wsdl:part element="tns:getGamesForPlayerResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="registerPlayerResponse">
+    <wsdl:part element="tns:registerPlayerResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getGamesForPlayer">
+    <wsdl:part element="tns:getGamesForPlayer" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="GameControllService">
+    <wsdl:operation name="getGamesForPlayer">
+      <wsdl:input message="tns:getGamesForPlayer" name="getGamesForPlayer"></wsdl:input>
+      <wsdl:output message="tns:getGamesForPlayerResponse" name="getGamesForPlayerResponse"></wsdl:output>
+      <wsdl:fault message="tns:PlayerNotFoundException" name="PlayerNotFoundException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="registerPlayer">
+      <wsdl:input message="tns:registerPlayer" name="registerPlayer"></wsdl:input>
+      <wsdl:output message="tns:registerPlayerResponse" name="registerPlayerResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="GameControllServiceWSServiceSoapBinding" type="tns:GameControllService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getGamesForPlayer">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getGamesForPlayer">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getGamesForPlayerResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="PlayerNotFoundException">
+        <soap:fault name="PlayerNotFoundException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="registerPlayer">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="registerPlayer">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="registerPlayerResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="GameControllServiceWSService">
+    <wsdl:port binding="tns:GameControllServiceWSServiceSoapBinding" name="GameControllServicePort">
+      <soap:address location="http://localhost:8080/goodstuff-ejb-0.1.0-SNAPSHOT/GameControllService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/goodstuff-ejb-0.1.0-SNAPSHOT/GameControllService</con:endpoint></con:endpoints><con:operation isOneWay="false" action="" name="getGamesForPlayer" bindingOperationName="getGamesForPlayer" type="Request-Response" outputName="getGamesForPlayerResponse" inputName="getGamesForPlayer" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Get games for player Daniel"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/goodstuff-ejb-0.1.0-SNAPSHOT/GameControllService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="service.business.goodstuff.danielsundberg.nu" xmlns:bus="business.goodstuff.danielsundberg.nu">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ser:getGamesForPlayer>
+         <!--Optional:-->
+         <bus:PlayerName>Daniel</bus:PlayerName>
+      </ser:getGamesForPlayer>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="service.business.goodstuff.danielsundberg.nu/GameControllService/getGamesForPlayer"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="" name="registerPlayer" bindingOperationName="registerPlayer" type="Request-Response" outputName="registerPlayerResponse" inputName="registerPlayer" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Create player Daniel"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/goodstuff-ejb-0.1.0-SNAPSHOT/GameControllService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="service.business.goodstuff.danielsundberg.nu" xmlns:bus="business.goodstuff.danielsundberg.nu">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ser:registerPlayer>
+         <!--Optional:-->
+         <bus:PlayerName>Daniel</bus:PlayerName>
+         <!--Optional:-->
+         <bus:PlayerPassword>leinaD</bus:PlayerPassword>
+      </ser:registerPlayer>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="service.business.goodstuff.danielsundberg.nu/GameControllService/registerPlayer"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:testSuite name="TestSuite 1"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Get games" searchProperties="true"><con:settings/><con:testStep type="request" name="Get games"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>GameControllServiceWSServiceSoapBinding</con:interface><con:operation>getGamesForPlayer</con:operation><con:request name="Get games"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/goodstuff-ejb-0.1.0-SNAPSHOT/GameControllService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="service.business.goodstuff.danielsundberg.nu" xmlns:bus="business.goodstuff.danielsundberg.nu">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ser:getGamesForPlayer>
+         <!--Optional:-->
+         <bus:PlayerName>Daniel</bus:PlayerName>
+      </ser:getGamesForPlayer>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response"/><con:assertion type="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion"/><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:properties/><con:wssContainer/></con:soapui-project>
