@@ -4,18 +4,65 @@ import java.util.Set;
 
 import nu.danielsundberg.goodstuff.access.entity.Game;
 import nu.danielsundberg.goodstuff.access.entity.Player;
+import nu.danielsundberg.goodstuff.application.exception.GameAllreadyExistsException;
+import nu.danielsundberg.goodstuff.application.exception.PlayerAllreadyExistsException;
 import nu.danielsundberg.goodstuff.application.exception.PlayerNotFoundException;
+import nu.danielsundberg.goodstuff.application.exception.WrongPasswordException;
 
+/**
+ * GameControllService interface
+ * 
+ * @author dansun
+ *
+ */
 public interface GameControllService {
 	
-	public Set<Game> getGamesForPlayer(String playerName) throws PlayerNotFoundException;
+	/**
+	 * Gets games for given player ID.
+	 * @param playerId
+	 * @param password
+	 * @return Set<Game>
+	 * @throws PlayerNotFoundException
+	 * @throws WrongPasswordException
+	 */
+	public Set<Game> getGamesForPlayer(Long playerId, String password) throws PlayerNotFoundException, WrongPasswordException;
 	
-	public Player registerPlayer(String playerName, String password);
+	/**
+	 * Registers a new player.
+	 * @param playerName
+	 * @param password
+	 * @return Player
+	 * @throws PlayerAllreadyExistsException
+	 */
+	public Player registerPlayer(String playerName, String password) throws PlayerAllreadyExistsException;
 	
-	public Game createGame(Integer playerId, String gameName);
+	/**
+	 * Creates a new game, registering player will automatically be added to the game.
+	 * @param playerId
+	 * @param password
+	 * @param gameName
+	 * @return Game
+	 * @throws GameAllreadyExistsException
+	 * @throws PlayerNotFoundException
+	 * @throws WrongPasswordException
+	 */
+	public Game createGame(Long playerId, String password, String gameName) throws GameAllreadyExistsException, PlayerNotFoundException, WrongPasswordException;
 	
-	public void invitePlayers(Integer playerId, String password, Set<Player> playersToInvite);
+	/**
+	 * Invite players to created game.
+	 * @param playerId
+	 * @param password
+	 * @param gameId
+	 * @param playersToInvite
+	 */
+	public void invitePlayers(Long playerId, String password, Long gameId, Set<Player> playersToInvite);
 	
-	public void acceptGame(Integer playerId, String password, Integer gameId);
+	/**
+	 * Accept invitation to game.
+	 * @param playerId
+	 * @param password
+	 * @param gameId
+	 */
+	public void acceptGame(Long playerId, String password, Long gameId);
 
 }

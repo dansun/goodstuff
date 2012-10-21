@@ -2,6 +2,12 @@ package nu.danielsundberg.goodstuff.access.entity;
 
 import java.io.Serializable;
 
+/**
+ * Idclass for combining players with games.
+ * 
+ * @author dansun
+ *
+ */
 public class GameplayerId implements Serializable {
 
 	private static final long serialVersionUID = 1L;

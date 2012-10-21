@@ -11,7 +11,16 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
 
+/**
+ * Gameplayer entity for persistence and propagation.
+ *
+ * @author dansun
+ *
+ */
 @Entity
 @Table(name="GAMEPLAYER")
 @IdClass(GameplayerId.class)
@@ -19,12 +28,14 @@ import javax.persistence.Table;
         @NamedQuery(name = "gameplayer.findByPlayerId", query = "SELECT gp FROM Gameplayer AS gp WHERE gp.playerId = :playerId"),
         @NamedQuery(name = "gameplayer.findByGameId", query = "SELECT gp FROM Gameplayer AS gp WHERE gp.gameId = :gameId")
 })
+@XmlAccessorType(XmlAccessType.NONE)
 public class Gameplayer implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@Column(nullable=false)
+	@XmlAttribute(name="gameId", required=true)
 	private long gameId;
 	
 	@Id
@@ -37,6 +48,7 @@ public class Gameplayer implements Serializable {
 	
 	@ManyToOne
 	@JoinColumn(name="playerId", insertable=false, updatable=false)
+	@XmlAttribute(name="gamePlayer", required=true)
 	private Player player;
 
 	public void setGameId(long gameId) {

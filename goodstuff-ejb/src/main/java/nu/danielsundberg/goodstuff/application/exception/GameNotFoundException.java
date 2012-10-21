@@ -9,11 +9,11 @@ import javax.xml.ws.WebFault;
  *
  */
 @WebFault(name = "PlayerNotFound", targetNamespace = "urn:nu.danielsundberg.goodstuff:exception")
-public class PlayerNotFoundException extends Exception {
+public class GameNotFoundException extends Exception {
 
 	private static final long serialVersionUID = 1L;
 
-	public PlayerNotFoundException(String message) {
+	public GameNotFoundException(String message) {
 		super(message);
 	}
 	
