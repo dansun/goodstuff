@@ -213,5 +213,12 @@
 	         <url>http://www.eviware.com/repository/maven2/</url>   
 	     </pluginRepository>
 	</pluginRepositories>
+	
+	<distributionManagement>
+		<snapshotRepository>
+			<id>repo.danielsundberg.nu</id>
+			<url>http://repo.danielsundberg.nu/nexus/content/repositories/snapshots</url>
+		</snapshotRepository>
+	</distributionManagement>
 
 </project>
