@@ -96,9 +96,9 @@ public class Game implements Serializable {
 	public GameState getGameState() {
 		if(this.startingTime!=null) {
 			if(this.finishingTime!=null) {
-				return GameState.RUNNING;	
+				return GameState.FINISHED;	
 			} else {
-				return GameState.FINISHED;
+				return GameState.RUNNING;
 			}
 		} else {
 			return GameState.CREATED;
