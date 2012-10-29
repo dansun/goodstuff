@@ -4,8 +4,10 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.notNullValue;
+import nu.danielsundberg.goodstuff.access.entity.Game.GameState;
 import nu.danielsundberg.goodstuff.test.GoodstuffJpaTestCase;
 
+import org.joda.time.DateTime;
 import org.junit.Test;
 import org.powermock.core.classloader.annotations.PowerMockIgnore;
 
@@ -51,6 +53,28 @@ public class GameTest extends GoodstuffJpaTestCase {
 		entityManager.flush();
 		Game deletedGame = entityManager.find(Game.class, id);
 		assertThat(deletedGame, is(equalTo(null)));
+	}
+	
+	@Test
+	public void testCreatedGameState() {
+		Game game = new Game();
+		assertThat(game.getGameState(), is(equalTo(GameState.CREATED)));
+	}
+	
+	@Test
+	public void testRunningGameState() {
+		Game game = new Game();
+		game.setStartingTime(new DateTime());
+		assertThat(game.getGameState(), is(equalTo(GameState.RUNNING)));
+	}
+	
+	@Test
+	public void testFinishedGameState() {
+		Game game = new Game();
+		DateTime dateTime = new DateTime();
+		game.setStartingTime(dateTime);
+		game.setFinishingTime(dateTime.plusMillis(1));
+		assertThat(game.getGameState(), is(equalTo(GameState.FINISHED)));
 	}
 	
 }
