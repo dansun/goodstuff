@@ -22,7 +22,7 @@
 		<ejb.version>3.1</ejb.version>
 		<slf4jversion>1.6.1</slf4jversion>
 		<log4jversion>1.2.16</log4jversion>
-		<junitversion>4.8.2</junitversion>
+		<junitversion>4.13.1</junitversion>
 	</properties>
 
 	<dependencyManagement>
